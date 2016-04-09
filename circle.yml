@@ -5,11 +5,10 @@ machine:
 dependencies:
   override:
     - docker info
-    - docker:
+    - docker build -t gentoo:ci .:
       - timeout: 3600
 
 test:
   override:
-    - docker build -t gentoo:ci .
     - docker run -d gentoo:ci
     - ./ci-slim.sh

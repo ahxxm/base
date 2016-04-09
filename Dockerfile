@@ -12,5 +12,4 @@ RUN emerge --sync --quiet && \
 RUN eselect locale set en_US.utf8 && \
   source /etc/profile && \
   revdep-rebuild -v && \
-  eclean -d distfiles && eclean -d packages && \
   /cleanup.sh && rm -rf /cleanup.sh

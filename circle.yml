@@ -10,3 +10,4 @@ dependencies:
 test:
   override:
     - docker run -d gentoo:ci
+    - ./ci-slim.sh

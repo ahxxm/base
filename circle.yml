@@ -12,3 +12,6 @@ test:
         timeout: 3600
     - docker run -d gentoo:ci
     - ./ci-slim.sh
+    - docker images -a --digests
+    - docker history gentoo:ci
+    - docker history gentoo:ci.slim

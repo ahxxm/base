@@ -2,4 +2,11 @@ machine:
   services:
     - docker
 
+dependencies:
+  override:
+    - docker info
+    - docker build -t gentoo:ci .
 
+test:
+  override:
+    - docker run -d gentoo:ci

@@ -1,13 +1,14 @@
 # Base Image
 
+Gentoo-stage 3 has less/more/cat/netstat inside, this adds nc/curl/gentoolkit/vim/emacs(not alphabetically ordered).
 
 ## Build/Update Notes
 
 Auto builds are in [Docker Hub](https://hub.docker.com/r/ahxxm/gentoo/).
 
-Manual build with [docker-slim](https://github.com/cloudimmunity/docker-slim):
+Image that use this base image can be slimmed using [docker-slim](https://github.com/cloudimmunity/docker-slim):
 
-    docker build -t gentoo.
-    ./docker-slim build gentoo
+    docker build -t some-image .
+    ./docker-slim build some-image
 
-will generate image named origin-image-name.slim, not working for base image though.
+slimmed image named some-image.slim.

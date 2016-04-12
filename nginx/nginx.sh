@@ -18,10 +18,10 @@ tar xf libressl-${LIBRESSL_VERSION}.tar.gz
 
 # Page speed
 cd
-wget https://github.com/pagespeed/ngx_pagespeed/archive/release-${NPS_VERSION}-beta.zip -O release-${NPS_VERSION}-beta.zip
-unzip release-${NPS_VERSION}-beta.zip
+wget -q https://github.com/pagespeed/ngx_pagespeed/archive/release-${NPS_VERSION}-beta.zip -O release-${NPS_VERSION}-beta.zip
+unzip -qq release-${NPS_VERSION}-beta.zip
 cd ngx_pagespeed-release-${NPS_VERSION}-beta/
-wget https://dl.google.com/dl/page-speed/psol/${NPS_VERSION}.tar.gz
+wget -q https://dl.google.com/dl/page-speed/psol/${NPS_VERSION}.tar.gz
 tar -xzvf ${NPS_VERSION}.tar.gz --no-same-owner  # extracts to psol/
 
 
@@ -32,8 +32,8 @@ useradd -s /sbin/nologin -g www www
 # nginx
 # check http://nginx.org/en/download.html for the latest version
 cd
-wget http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz
-tar -xvzf nginx-${NGINX_VERSION}.tar.gz
+wget -q http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz
+tar xf nginx-${NGINX_VERSION}.tar.gz
 cd nginx-${NGINX_VERSION}/
 ./configure \
     --user=www \

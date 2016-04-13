@@ -6,8 +6,10 @@ COPY cleanup.sh /cleanup.sh
 COPY nginx.sh /nginx.sh
 
 # Nginx build dependencies
-RUN emerge --quiet --quiet-build=y sys-libs/zlib sys-devel/binutils dev-libs/pcre++
-RUN /nginx.sh && /cleanup.sh && rm -rf /cleanup.sh
+RUN emerge --quiet --quiet-build=y sys-libs/zlib sys-devel/binutils dev-libs/pcre++ && \
+  /nginx.sh && \
+  /cleanup.sh && \
+  rm -rf /cleanup.sh /nginx.sh
 
 CMD ["nginx"]
 

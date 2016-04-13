@@ -49,8 +49,9 @@ cd nginx-${NGINX_VERSION}/
     --add-module=$HOME/ngx_pagespeed-release-${NPS_VERSION}-beta ${PS_NGX_EXTRA_FLAGS}
 make -j8
 make install
+make clean
+cd 
+rm -rf *
 
-
-# TODO: post install configure
-
-
+# nginx binary add to path
+ln -s /usr/local/nginx/sbin/nginx /usr/bin/nginx

@@ -10,3 +10,4 @@ RUN emerge --quiet --quiet-build=y sys-libs/zlib sys-devel/binutils dev-libs/pcr
 RUN /nginx.sh && /cleanup.sh && rm -rf /cleanup.sh
 
 CMD ["nginx"]
+

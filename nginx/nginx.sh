@@ -13,10 +13,10 @@ LIBRESSL_VERSION=2.3.3 # nice shot
 mkdir -p /tmp
 
 # dependencies
-build_dep="curl gnupg build-base pcre-dev zlib-dev linux-headers"
-# "ca-certificates openssl pcre zlib" ?
+build_dep="curl gnupg build-base pcre-dev zlib-dev linux-headers openssl-dev"
+run_dep="ca-certificates openssl pcre zlib"
 
-apk --no-cache add ${build_dep}
+apk --no-cache add ${build_dep} ${run_dep}
 gpg --keyserver pgp.mit.edu --recv-keys A1EB079B8D3EB92B4EBD3139663AF51BD5E4D8D5
 gpg --keyserver pgp.mit.edu --recv-keys B0F4253373F8F6F510D42178520A9993A1C052F8
 

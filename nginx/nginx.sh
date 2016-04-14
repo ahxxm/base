@@ -26,7 +26,7 @@ adduser -D -s /sbin/nologin www-data
 cd /tmp
 curl -fSL http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-${LIBRESSL_VERSION}.tar.gz -o libressl-${LIBRESSL_VERSION}.tar.gz
 curl -fSL http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-${LIBRESSL_VERSION}.tar.gz.asc -o libressl-${LIBRESSL_VERSION}.tar.gz.asc
-gpg --batch --verify libressl-${LIBRESSL_VERSION}.tar.gz libressl-${LIBRESSL_VERSION}.tar.gz.asc
+gpg --batch --verify libressl-${LIBRESSL_VERSION}.tar.gz.asc libressl-${LIBRESSL_VERSION}.tar.gz
 tar -zxf libressl-${LIBRESSL_VERSION}.tar.gz
 
 

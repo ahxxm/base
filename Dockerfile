@@ -7,10 +7,8 @@ COPY cleanup.sh /cleanup.sh
 RUN emerge --sync --quiet && \
   emerge --update --newuse --deep --quiet-build=y @world && \
   emerge --quiet --quiet-build=y net-analyzer/netcat net-misc/curl app-portage/gentoolkit app-arch/unzip app-editors/vim app-editors/emacs && \
-  /cleanup.sh
-
 # Post installation config: locale, revdep, clean
-RUN eselect locale set en_US.utf8 && \
+  eselect locale set en_US.utf8 && \
   source /etc/profile && \
   revdep-rebuild -v && \
   /cleanup.sh && rm -rf /cleanup.sh

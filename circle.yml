@@ -10,7 +10,7 @@ test:
   override:
     - cd nginx && docker build -t base:nginx ./:
         timeout: 3600
-    - cd shadowsocks-libev/docker/alpine && docker build -t base:shadowsocks .
+    - git submodule init && git submodule update && cd shadowsocks-libev/docker/alpine && docker build -t base:shadowsocks .
     - docker run -d base:nginx
     - docker run -p 11111:8388 -p 11111:8388/udp -d base:shadowsocks
     - docker images -a --digests

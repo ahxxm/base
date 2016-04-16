@@ -6,7 +6,7 @@ ENV SS_DEP autoconf build-base curl libtool linux-headers openssl-dev unzip
 
 RUN set -ex \
     && apk add --update $SS_DEP \
-    && curl -sSL $SS_URL \
+    && curl -fSL $SS_URL -o master.zip \
     && unzip master.zip
     && mv shadowsocks-libev* $SS_DIR
     && cd $SS_DIR \

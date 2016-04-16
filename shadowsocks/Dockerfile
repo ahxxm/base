@@ -11,7 +11,7 @@ RUN set -ex \
     && mv shadowsocks-libev* $SS_DIR \
     && cd $SS_DIR \
         && ./configure \
-        && make -j $(getconf _NPROCESSORS_ONLN) \
+        && make -j8 \
         && make install \
         && cd .. \
         && rm -rf $SS_DIR \

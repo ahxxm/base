@@ -7,8 +7,8 @@ ENV SS_DEP autoconf build-base curl libtool linux-headers openssl-dev unzip
 RUN set -ex \
     && apk add --update $SS_DEP \
     && curl -fSL $SS_URL -o master.zip \
-    && unzip master.zip
-    && mv shadowsocks-libev* $SS_DIR
+    && unzip master.zip \
+    && mv shadowsocks-libev* $SS_DIR \
     && cd $SS_DIR \
         && ./configure \
         && make -j $(getconf _NPROCESSORS_ONLN) \

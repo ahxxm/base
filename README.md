@@ -29,7 +29,7 @@ Configuration file path inside container is specified by run command, for exampl
 
 In which:
 
-- ~/dev/base/ocserv/conf: contains sample.config
+- ~/dev/base/ocserv/conf: contains `sample.config` and `ocpassword`, there's a default user `ahxxm` with password `ahxxm`, you can delete `ocpassword` and create your own(see below.)
 - ~/dev/base/ocserv/keys: contains several files.
 - -c: specify config path
 - -f: run in foreground
@@ -60,8 +60,5 @@ Then to add new user:
 
 - [ ] Improve `sample.config`.
 - [ ] Add default key/cert?
-- [ ] Add default user?
 - [ ] Guide for ocserv certification authorization.
 - [ ] Generate `dh.params` as well?
-
-

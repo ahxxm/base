@@ -10,3 +10,6 @@ certtool --generate-privkey --outfile /opt/certs/ca-key.pem \
 # Client cert
 cd /opt/certs && certtool --generate-privkey --outfile user-key.pem \
     && certtool --generate-certificate --load-privkey user-key.pem --load-ca-certificate ca-cert.pem --load-ca-privkey ca-key.pem --template user.tmpl --outfile user-cert.pem
+
+# convert to .p12
+certtool --to-p12 --load-privkey user-key.pem --pkcs-cipher 3des-pkcs12 --load-certificate user-cert.pem --outfile user.p12 --outder

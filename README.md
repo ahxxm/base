@@ -20,22 +20,48 @@ Default guest port is 8388(both tcp and udp).
 
 ### ocserv
 
-This container requires enabling `previliged` option in Docker run:
+Configuration file path inside container is specified by run command, for example:
 
-    docker run -p 21:443 --privileged -d ahxxm/base:ocserv
+    # dangle inside container
+    docker run -it --rm -v ~/dev/base/ocserv/conf:/etc/ocserv -v ~/dev/base/ocserv/keys:/opt/certs ahxxm/base:ocserv sh
+    ocserv -c /etc/ocserv/sample.config -f -d 999
+    -v ~/dev/base/ocserv/keys:/opt/certs
 
-Configuration file path inside container is `/etc/ocserv/ocserv.conf`:
+In which:
+
+- ~/dev/base/ocserv/conf: contains sample.config
+- ~/dev/base/ocserv/keys: contains several files.
+- -c: specify config path
+- -f: run in foreground
+- -d: debug level, from 0 to 9999
+
+About keys/certs:
+
+- server-cert.pem, server-key.pem: just like SSH key/cert pair.
+- ca.pem: Certificate Authority.
+
+Configuration file also needs to be modified, here are some default values:
 
 - Default port in `sample.config` is 443.
 - Authentication method is plain account/password.
-- No China route.
+- No China route(yet).
 
-To add new user:
+This container requires enabling `previliged` option in Docker run:
+
+    # suppose path of the repo is: ~/dev/base
+    docker run -p 21:443 --privileged -d -v ~/dev/base/ocserv/conf:/etc/ocserv -v ~/dev/base/ocserv/keys:/opt/certs ahxxm/base:ocserv ocserv -c /etc/ocserv/sample.config -f
+
+Then to add new user:
 
     docker exec -it [container_id] ocpasswd [username]
 
 
 ## TODO
 
-- [] Improve `sample.config`.
-- [] Guide for ocserv certification authorization.
+- [ ] Improve `sample.config`.
+- [ ] Add default key/cert?
+- [ ] Add default user?
+- [ ] Guide for ocserv certification authorization.
+- [ ] Generate `dh.params` as well?
+
+

@@ -9,7 +9,7 @@ build_dep="build-base curl autoconf automake readline-dev libnl3-dev linux-heade
 apk update
 apk add $build_dep $dep
 
-# source build
+# source build and install
 cd
 curl -fSL https://github.com/ahxxm/base/raw/master/ocserv/ocserv-0.10.11.zip -o ocserv.zip
 unzip -q ocserv.zip
@@ -22,7 +22,8 @@ make
 make install
 
 
-# install
+# clean
+# notice that occtl requires libnl3-dev and readline-dev
 apk del $build_dep
 rm /var/cache/apk/*
 rm -r /root/*

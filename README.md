@@ -37,8 +37,9 @@ In which:
 
 About keys/certs:
 
-- server-cert.pem, server-key.pem: just like SSH key/cert pair.
-- ca.pem: Certificate Authority.
+- server-cert.pem, server-key.pem: just like SSH key/cert pair, for example `fullchain.pem` from LetsEncrypt corresponds to cert, `privkey.pem` corresponds to key.
+- ca.pem: Certificate Authority, for example LetsEncrypt Authority X3(default intermidiate cert for normal user) uses [this](https://letsencrypt.org/certs/lets-encrypt-x3-cross-signed.pem) one.
+- Certificate login requires client cert, which requires CA.key, which is of course not available for normal user. You **must** create your own CA authority and import as trusted.
 
 Configuration file also needs to be modified, here are some default values:
 
@@ -62,3 +63,4 @@ Then to add new user:
 - [ ] Add default key/cert?
 - [ ] Guide for ocserv certification authorization.
 - [ ] Generate `dh.params` as well?
+- [ ] iptables?

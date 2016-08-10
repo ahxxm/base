@@ -5,4 +5,4 @@ ln -s /usr/include/locale.h /usr/include/xlocale.h
 pip3 install --no-cache-dir "ipython[all]"
 pip3 install --no-cache-dir pandas matplotlib
 
-apk del build-base zeromq-dev python3-dev freetype-dev libpng-dev
+apk del build-base

@@ -4,4 +4,4 @@ FROM alpine:latest
 WORKDIR /root/.jupyter/
 ADD . ./
 RUN ./build.sh
-CMD ["start.sh"]
+CMD ["/root/.jupyter/start.sh"]

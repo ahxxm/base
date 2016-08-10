@@ -1,6 +1,7 @@
 # copied from: https://github.com/jupyter/docker-stacks/blob/master/base-notebook/jupyter_notebook_config.py
-# Sources(slightly modified): try get default port from $NOTEBOOK_PORT,
-# then fallback to 8888.
+# Sources(slightly modified): 
+# - try get default port from $NOTEBOOK_PORT, then fallback to 8888.
+# - always use https and password, default value is "L1b&MQ"
 
 # Copyright (c) Jupyter Development Team.
 from jupyter_core.paths import jupyter_data_dir
@@ -16,8 +17,8 @@ c.NotebookApp.ip = '*'
 c.NotebookApp.port = os.environ.get("NOTEBOOK_PORT", 8888)
 c.NotebookApp.open_browser = False
 
-# Set a certificate if USE_HTTPS is set to any value
-if 'USE_HTTPS' in os.environ:
+# always https
+if True:
     if not os.path.isfile(PEM_FILE):
         # Ensure PEM_FILE directory exists
         dir_name = os.path.dirname(PEM_FILE)
@@ -36,8 +37,7 @@ if 'USE_HTTPS' in os.environ:
         os.chmod(PEM_FILE, stat.S_IRUSR | stat.S_IWUSR)
     c.NotebookApp.certfile = PEM_FILE
 
-# Set a password if PASSWORD is set
-if 'PASSWORD' in os.environ:
-    from IPython.lib import passwd
-    c.NotebookApp.password = passwd(os.environ['PASSWORD'])
-    del os.environ['PASSWORD']
+# Set a password
+from IPython.lib import passwd
+pwd = os.environ.get("PASSWORD", "L1b&MQ")
+c.NotebookApp.password = passwd(pwd)

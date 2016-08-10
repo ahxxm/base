@@ -2,6 +2,6 @@
 
 FROM alpine:latest
 WORKDIR /home/root/.jupyter/
-ADD config.py ./jupyter_notebook_config.py
+ADD . ./
 RUN build.sh
 CMD ["jupyter", "notebook"]

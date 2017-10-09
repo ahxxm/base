@@ -4,7 +4,7 @@ set -e
 
 # ref:
 # - https://www.futures.moe/writings/configure-nginx-with-security-and-effective-yes-or-no.htm
-NGINX_VERSION=1.13.4
+NGINX_VERSION=1.13.5
 LIBRESSL_VERSION=2.5.5
 
 mkdir -p /tmp
@@ -44,6 +44,8 @@ cd nginx-${NGINX_VERSION}/
     --with-http_gunzip_module \
     --with-http_gzip_static_module \
     --with-http_v2_module \
+    --with-threads \
+    --with-file-aio \
     --with-openssl=/tmp/libressl-${LIBRESSL_VERSION} \
     --with-ld-opt="-lrt"
 make -j $(getconf _NPROCESSORS_ONLN)

@@ -1,55 +1,31 @@
-machine:
-  services:
-    - docker
+version: 2
+jobs:
+  nginx:
+    machine: true
+    steps:
+      - checkout
+      - run: cd nginx && docker build -t base:nginx ./
+  shadowsocks:
+    machine: true
+    steps:
+      - checkout
+      - run: cd shadowsocks && docker build -t base:shadowsocks ./
+  v2ray:
+    machine: true
+    steps:
+      - checkout
+      - run: cd v2ray && docker build -t base:v2ray ./
+  ipython:
+    machine: true
+    steps:
+      - checkout
+      - run: cd ipython && docker build -t base:ipython ./
 
-dependencies:
-  override:
-    - docker info
-    - ? |
-        set -e
-        case $CIRCLE_NODE_INDEX in
-          0)
-          cd nginx && docker build -t base:nginx ./
-          ;;
-          1)
-          cd shadowsocks && docker build -t base:shadowsocks .
-          ;;
-          2)
-          cd ipython && docker build -t base:ipython .
-          ;;
-          3)
-          cd v2ray && docker build -t base:v2ray .
-          ;;
-        esac
-      :
-        parallel: true
-
-test:
-  override:
-    - ? |
-        set -e
-        case $CIRCLE_NODE_INDEX in
-          0)
-          docker run -d base:nginx
-          docker history base:nginx
-          docker ps -a
-          ;;
-          1)
-          docker history base:shadowsocks
-          docker run --restart=always -p 11111:8388 -p 11111:8388/udp -e "METHOD=chacha20" -e "PASSWORD=Arizona" -d base:shadowsocks
-          docker ps -a
-          ;;
-          2)
-          docker history base:ipython
-          docker run -d base:ipython
-          docker ps -a
-          ;;
-          3)
-          docker history base:v2ray
-          docker run -d base:v2ray
-          docker ps -a
-          ;;
-        esac
-      :
-        parallel: true
-    - docker images -a --digests
+workflows:
+  version: 2
+  all:
+    jobs:
+      - nginx
+      - shadowsocks
+      - v2ray
+      - ipython

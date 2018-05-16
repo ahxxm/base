@@ -4,35 +4,28 @@ set -e
 
 # ref:
 # - https://www.futures.moe/writings/configure-nginx-with-security-and-effective-yes-or-no.htm
-NGINX_VERSION=1.13.7
-LIBRESSL_VERSION=2.6.3
+NGINX_VERSION=1.13.12
+LIBRESSL_VERSION=2.7.3
 
 mkdir -p /tmp
 
 # dependencies
-build_dep="curl gnupg build-base pcre-dev zlib-dev linux-headers openssl-dev"
+build_dep="curl build-base pcre-dev zlib-dev linux-headers openssl-dev"
 run_dep="ca-certificates openssl pcre zlib"
 
 apk --no-cache add ${build_dep} ${run_dep}
-gpg --keyserver pgp.mit.edu --recv-keys A1EB079B8D3EB92B4EBD3139663AF51BD5E4D8D5
-gpg --keyserver pgp.mit.edu --recv-keys B0F4253373F8F6F510D42178520A9993A1C052F8
-
 adduser -D -s /sbin/nologin www-data
 
 # LibreSSL
 cd /tmp
-curl -fSL http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-${LIBRESSL_VERSION}.tar.gz -o libressl-${LIBRESSL_VERSION}.tar.gz
-curl -fSL http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-${LIBRESSL_VERSION}.tar.gz.asc -o libressl-${LIBRESSL_VERSION}.tar.gz.asc
-gpg --batch --verify libressl-${LIBRESSL_VERSION}.tar.gz.asc libressl-${LIBRESSL_VERSION}.tar.gz
+curl -fSL https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-${LIBRESSL_VERSION}.tar.gz -o libressl-${LIBRESSL_VERSION}.tar.gz
 tar -zxf libressl-${LIBRESSL_VERSION}.tar.gz
 
 
 # nginx
 # check http://nginx.org/en/download.html for the latest version
 cd /tmp
-curl -fSL http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz -o nginx-${NGINX_VERSION}.tar.gz
-curl -fSL http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz.asc -o nginx-${NGINX_VERSION}.tar.gz.asc
-gpg --batch --verify nginx-${NGINX_VERSION}.tar.gz.asc nginx-${NGINX_VERSION}.tar.gz
+curl -fSL https://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz -o nginx-${NGINX_VERSION}.tar.gz
 tar -zxf nginx-${NGINX_VERSION}.tar.gz
 cd nginx-${NGINX_VERSION}/
 ./configure \

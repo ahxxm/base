@@ -17,6 +17,9 @@ dependencies:
           2)
           cd ipython && docker build -t base:ipython .
           ;;
+          3)
+          cd v2ray && docker build -t base:v2ray .
+          ;;
         esac
       :
         parallel: true
@@ -39,6 +42,11 @@ test:
           2)
           docker history base:ipython
           docker run -d base:ipython
+          docker ps -a
+          ;;
+          3)
+          docker history base:v2ray
+          docker run -d base:v2ray
           docker ps -a
           ;;
         esac

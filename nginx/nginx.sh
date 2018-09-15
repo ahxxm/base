@@ -1,10 +1,9 @@
 #!/bin/sh
 set -e
 
-
 # ref:
 # - https://www.futures.moe/writings/configure-nginx-with-security-and-effective-yes-or-no.htm
-NGINX_VERSION=1.15.2
+NGINX_VERSION=1.15.3
 LIBRESSL_VERSION=2.7.4
 
 mkdir -p /tmp

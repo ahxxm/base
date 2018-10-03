@@ -15,11 +15,6 @@ jobs:
     steps:
       - checkout
       - run: cd v2ray && docker build -t base:v2ray ./
-  ipython:
-    machine: true
-    steps:
-      - checkout
-      - run: cd ipython && docker build -t base:ipython ./
 
 workflows:
   version: 2
@@ -28,4 +23,3 @@ workflows:
       - nginx
       - shadowsocks
       - v2ray
-      - ipython

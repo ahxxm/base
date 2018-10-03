@@ -1,5 +1,5 @@
 #!/bin/sh
-set -e
+set -ex
 
 # ref:
 # - https://www.futures.moe/writings/configure-nginx-with-security-and-effective-yes-or-no.htm

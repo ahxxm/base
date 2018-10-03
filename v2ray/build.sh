@@ -1,5 +1,7 @@
 #/bin/sh
 
+set -ex
+
 mkdir -p $GOPATH/src/github.com/v2ray && cd $GOPATH/src/github.com/v2ray
 git clone --recursive https://github.com/v2ray/v2ray-core
 

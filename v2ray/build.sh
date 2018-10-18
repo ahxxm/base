@@ -9,5 +9,8 @@ cd v2ray-core
 go get -v
 go get -v -u v2ray.com/core/...
 go get -v -u v2ray.com/ext/...
-go install v2ray.com/ext/tools/build/vbuild
-vbuild -dir /usr/bin/v2ray
+mkdir -p /v2ray
+go build -o /v2ray/v2ctl v2ray.com/ext/tools/control/main
+go build -o /v2ray/v2ray v2ray.com/core/main
+cp ./release/config/geoip.dat /v2ray/
+cp ./release/config/geosite.dat /v2ray/

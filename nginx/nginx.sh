@@ -3,7 +3,7 @@ set -ex
 
 # ref:
 # - https://www.futures.moe/writings/configure-nginx-with-security-and-effective-yes-or-no.htm
-NGINX_VERSION=1.15.8
+NGINX_VERSION=1.15.9
 LIBRESSL_VERSION=2.8.3
 
 mkdir -p /tmp

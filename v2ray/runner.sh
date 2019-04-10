@@ -1,8 +1,9 @@
 #!/bin/sh
 
 set -ex
-apt update && apt -y upgrade
-apt install -y ca-certificates && update-ca-certificates --fresh --verbose
+
+apk update
+apk add ca-certificates
 
 mkdir /usr/bin/v2ray/
 mkdir /etc/v2ray/

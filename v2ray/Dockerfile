@@ -2,7 +2,7 @@ FROM golang:latest as builder
 ADD build.sh /
 RUN /build.sh
 
-FROM golang:latest
+FROM alpine:latest
 ENV TZ=Asia/Shanghai
 ADD runner.sh /
 RUN /runner.sh

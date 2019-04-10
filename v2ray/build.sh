@@ -2,15 +2,26 @@
 
 set -ex
 
-mkdir -p $GOPATH/src/github.com/v2ray && cd $GOPATH/src/github.com/v2ray
-git clone --recursive https://github.com/v2ray/v2ray-core
+BAZEL_VER='0.23.0'
 
-cd v2ray-core
-go get -v
-go get -v -u v2ray.com/core/...
-go get -v -u v2ray.com/ext/...
-mkdir -p /v2ray
-go build -o /v2ray/v2ctl v2ray.com/ext/tools/control/main
-go build -o /v2ray/v2ray v2ray.com/core/main
-cp ./release/config/geoip.dat /v2ray/
-cp ./release/config/geosite.dat /v2ray/
+apt update
+apt install -y unzip
+
+curl -L -o bazel-installer.sh https://github.com/bazelbuild/bazel/releases/download/${BAZEL_VER}/bazel-${BAZEL_VER}-installer-linux-x86_64.sh
+chmod +x bazel-installer.sh
+./bazel-installer.sh --user
+
+# will download src to /go/src
+go get -v -t -d v2ray.com/core/...
+cd ./src/v2ray.com/core
+
+# HACK for GOCACHE: @D in bazel means output dir, which is not absolute path as required by go
+mkdir -p /build
+sed -i 's|@D|/build|g' infra/bazel/build.bzl
+
+# build for linux-amd64
+$HOME/bin/bazel build --action_env=GOPATH=$GOPATH --action_env=PATH=$PATH //release:v2ray_linux_amd64_package
+
+# unzip to /v2ray for runner to copy
+mkdir -p /v2ray && cd /v2ray
+unzip /go/src/v2ray.com/core/bazel-bin/release/v2ray-linux-64.zip

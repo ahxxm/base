@@ -4,17 +4,26 @@ jobs:
     machine: true
     steps:
       - checkout
-      - run: cd nginx && docker build -t base:nginx ./
+      - run: |
+          docker login -u $DOCKER_USER -p $DOCKER_PASS
+          cd nginx && docker build -t ahxxm/base:nginx ./
+          docker push ahxxm/base:nginx
   shadowsocks:
     machine: true
     steps:
       - checkout
-      - run: cd shadowsocks && docker build -t base:shadowsocks ./
+      - run: |
+          docker login -u $DOCKER_USER -p $DOCKER_PASS
+          cd shadowsocks && docker build -t ahxxm/base:shadowsocks ./
+          docker push ahxxm/base:shadowsocks
   v2ray:
     machine: true
     steps:
       - checkout
-      - run: cd v2ray && docker build -t base:v2ray ./
+      - run: |
+          docker login -u $DOCKER_USER -p $DOCKER_PASS
+          cd v2ray && docker build -t ahxxm/base:v2ray ./
+          docker push ahxxm/base:v2ray
 
 workflows:
   version: 2

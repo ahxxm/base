@@ -3,8 +3,12 @@ set -ex
 
 # ref:
 # - https://www.futures.moe/writings/configure-nginx-with-security-and-effective-yes-or-no.htm
-NGINX_VERSION=1.17.1
-LIBRESSL_VERSION=2.9.1
+
+# changelog:
+# http://nginx.org/en/download.html
+# https://www.libressl.org/
+NGINX_VERSION=1.17.2
+LIBRESSL_VERSION=2.9.2
 
 mkdir -p /tmp
 
@@ -20,9 +24,7 @@ cd /tmp
 curl -fSL https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-${LIBRESSL_VERSION}.tar.gz -o libressl-${LIBRESSL_VERSION}.tar.gz
 tar -zxf libressl-${LIBRESSL_VERSION}.tar.gz
 
-
 # nginx
-# check http://nginx.org/en/download.html for the latest version
 cd /tmp
 curl -fSL https://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz -o nginx-${NGINX_VERSION}.tar.gz
 tar -zxf nginx-${NGINX_VERSION}.tar.gz

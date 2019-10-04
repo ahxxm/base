@@ -12,7 +12,7 @@ chmod +x bazel-installer.sh
 ./bazel-installer.sh --user
 
 # will download src to /go/src
-go get -v -t -d v2ray.com/core/...
+go get -insecure -v -t -d v2ray.com/core/...
 cd ./src/v2ray.com/core
 
 # HACK for GOCACHE: @D in bazel means output dir, which is not absolute path as required by go

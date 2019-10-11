@@ -2,8 +2,7 @@
 
 set -ex
 
-apk update
-apk add ca-certificates
+apk --no-cache add ca-certificates
 
 mkdir /usr/bin/v2ray/
 mkdir /etc/v2ray/

@@ -12,12 +12,10 @@ chmod +x bazel-installer.sh
 ./bazel-installer.sh --user
 
 # will download src to /go/src
+# fix HEAD at v4.22.1
 go get -insecure -v -t -d v2ray.com/core/...
 cd ./src/v2ray.com/core
-
-# HACK for GOCACHE: @D in bazel means output dir, which is not absolute path as required by go
-mkdir -p /build
-sed -i 's|@D|/build|g' infra/bazel/build.bzl
+git checkout tags/v4.22.1
 
 # build for linux-amd64
 $HOME/bin/bazel build --action_env=GOPATH=$GOPATH --action_env=PATH=$PATH //release:v2ray_linux_amd64_package

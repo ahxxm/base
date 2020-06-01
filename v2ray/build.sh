@@ -12,10 +12,10 @@ chmod +x bazel-installer.sh
 ./bazel-installer.sh --user
 
 # will download src to /go/src
-# fix HEAD at v4.22.1
+# fix HEAD
 go get -insecure -v -t -d v2ray.com/core/...
 cd ./src/v2ray.com/core
-git checkout tags/v4.22.1
+git checkout tags/v4.23.2
 
 # build for linux-amd64
 $HOME/bin/bazel build --action_env=GOPATH=$GOPATH --action_env=PATH=$PATH //release:v2ray_linux_amd64_package

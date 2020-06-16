@@ -8,7 +8,7 @@ set -ex
 # http://nginx.org/en/download.html
 # https://www.libressl.org/
 NGINX_VERSION=1.19.0
-LIBRESSL_VERSION=3.1.2
+LIBRESSL_VERSION=3.1.3
 
 mkdir -p /tmp
 

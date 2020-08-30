@@ -1,4 +1,14 @@
+FROM alpine:latest as obfs
+WORKDIR /obfs
+RUN apk add git gcc autoconf make libtool automake zlib-dev openssl asciidoc xmlto libpcre32 libev-dev g++ linux-headers
+RUN git clone --recursive https://github.com/shadowsocks/simple-obfs.git
+#  /obfs/simple-obfs/src/obfs-local depends on libev.so.4
+RUN cd simple-obfs && ./autogen.sh && ./configure && make
+
+
 FROM alpine:latest
+
+COPY --from=obfs /obfs/simple-obfs/src/obfs-local /usr/bin/obfs-local
 
 ENV SS_URL https://github.com/shadowsocks/shadowsocks-libev
 ENV SS_DIR shadowsocks-libev

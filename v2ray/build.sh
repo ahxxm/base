@@ -15,7 +15,7 @@ chmod +x bazel-installer.sh
 # fix HEAD
 go get -insecure -v -t -d v2ray.com/core/...
 cd ./src/v2ray.com/core
-git checkout tags/v4.27.0
+git checkout tags/v4.27.5
 
 # update geoip geosite dat
 ./release/updatedat.sh

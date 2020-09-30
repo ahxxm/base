@@ -5,24 +5,19 @@ set -ex
 BAZEL_VER='0.23.0'
 
 apt update
-apt install -y unzip
-
-curl -L -o bazel-installer.sh https://github.com/bazelbuild/bazel/releases/download/${BAZEL_VER}/bazel-${BAZEL_VER}-installer-linux-x86_64.sh
-chmod +x bazel-installer.sh
-./bazel-installer.sh --user
+apt install -y zip git curl
 
 # will download src to /go/src
 # fix HEAD
 go get -insecure -v -t -d v2ray.com/core/...
 cd ./src/v2ray.com/core
-git checkout tags/v4.27.5
+git checkout tags/v4.28.2
 
-# update geoip geosite dat
-./release/updatedat.sh
-
-# build for linux-amd64
-$HOME/bin/bazel build --action_env=GOPATH=$GOPATH --action_env=PATH=$PATH --action_env=GPG_PASS=${SIGN_KEY_PASS} --action_env=SPWD=$PWD --action_env=GOCACHE=$(go env GOCACHE) --spawn_strategy local //release:v2ray_linux_amd64_package
-
-# unzip to /v2ray for runner to copy
-mkdir -p /v2ray && cd /v2ray
-unzip /go/src/v2ray.com/core/bazel-bin/release/v2ray-linux-64.zip
+# build package
+# https://github.com/v2ray/v2ray-core/blob/master/release/user-package.sh
+mkdir -p /v2ray
+LDFLAGS="-s -w"
+env CGO_ENABLED=0 go build -o /v2ray/v2ray -ldflags "$LDFLAGS" ./main
+env CGO_ENABLED=0 go build -o /v2ray/v2ctl -tags confonly -ldflags "$LDFLAGS" ./infra/control/main
+curl -s -L -o /v2ray/geoip.dat "https://github.com/v2ray/geoip/raw/release/geoip.dat"
+curl -s -L -o /v2ray/geosite.dat "https://github.com/v2ray/domain-list-community/raw/release/dlc.dat"

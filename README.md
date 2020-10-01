@@ -10,5 +10,5 @@ List:
 
 - `shadowsocks-libev`: latest master, Dockerfile mostly copied from `docker/alpine/Dockerfile` of origin repo.
 
-- `v2ray`: latest master, same pipeline(bazel build) with its repo's
+- `v2ray`: latest tag
 

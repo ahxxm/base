@@ -7,7 +7,7 @@ set -ex
 # changelog:
 # http://nginx.org/en/download.html
 # https://www.libressl.org/
-NGINX_VERSION=1.19.2
+NGINX_VERSION=1.19.3
 LIBRESSL_VERSION=3.1.4
 
 mkdir -p /tmp

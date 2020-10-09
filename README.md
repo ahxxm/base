@@ -12,3 +12,5 @@ List:
 
 - `v2ray`: latest tag
 
+- `qbittorrent`: [musl build](https://github.com/userdocs/qbittorrent-nox-static)
+

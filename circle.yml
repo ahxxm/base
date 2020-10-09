@@ -8,6 +8,14 @@ jobs:
           docker login -u $DOCKER_USER -p $DOCKER_PASS
           cd nginx && docker build -t ahxxm/base:nginx ./
           docker push ahxxm/base:nginx
+  qbittorrent:
+    machine: true
+    steps:
+      - checkout
+      - run: |
+          docker login -u $DOCKER_USER -p $DOCKER_PASS
+          cd qbittorrent && docker build -t ahxxm/base:qbittorrent ./
+          docker push ahxxm/base:qbittorrent
   shadowsocks:
     machine: true
     steps:
@@ -32,6 +40,7 @@ workflows:
       - nginx
       - shadowsocks
       - v2ray
+      - qbittorrent
   nightly:
     triggers: #use the triggers key to indicate a scheduled build
       - schedule:

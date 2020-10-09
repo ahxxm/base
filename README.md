@@ -12,3 +12,5 @@ List:
 
 - `v2ray`: latest master, same pipeline(bazel build) with its repo's
 
+- `qbittorrent`: [musl build](https://github.com/userdocs/qbittorrent-nox-static)
+

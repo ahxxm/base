@@ -2,8 +2,6 @@
 
 set -ex
 
-BAZEL_VER='0.23.0'
-
 apt update
 apt install -y zip git curl
 

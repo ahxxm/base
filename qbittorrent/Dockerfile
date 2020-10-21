@@ -8,7 +8,7 @@ FROM alpine:3.12
 # groupadd and useradd
 RUN apk add --no-cache shadow
 
-# wget -O qbittorrent-nox https://github.com/userdocs/qbittorrent-nox-static/releases/download/4.2.5.1.2.10/amd64-musl-qbittorrent-nox
+# wget -O qbittorrent-nox https://github.com/userdocs/qbittorrent-nox-static/releases/download/4.3.0.1.2.10/amd64-musl-qbittorrent-nox
 # chmod +x qbittorrent-nox
 ADD qbittorrent-nox /usr/bin/
 

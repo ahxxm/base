@@ -9,7 +9,7 @@ apt install -y zip git curl
 # fix HEAD
 go get -insecure -v -t -d v2ray.com/core/...
 cd ./src/v2ray.com/core
-git checkout tags/v4.28.2
+git checkout tags/v4.31.0
 
 # build package
 # https://github.com/v2ray/v2ray-core/blob/master/release/user-package.sh

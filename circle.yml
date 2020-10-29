@@ -27,11 +27,6 @@ jobs:
     steps:
       - build_push:
           tag: "shadowsocks"
-  v2ray:
-    machine: true
-    steps:
-      - build_push:
-          tag: "v2ray"
 
 workflows:
   version: 2
@@ -39,7 +34,6 @@ workflows:
     jobs:
       - nginx
       - shadowsocks
-      - v2ray
       - qbittorrent
   nightly:
     triggers: #use the triggers key to indicate a scheduled build
@@ -52,4 +46,3 @@ workflows:
     jobs:
       - nginx
       - shadowsocks
-      - v2ray

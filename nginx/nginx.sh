@@ -17,7 +17,7 @@ build_dep="curl build-base pcre-dev zlib-dev linux-headers openssl-dev"
 run_dep="ca-certificates openssl pcre zlib"
 
 apk --no-cache add ${build_dep} ${run_dep}
-adduser -D -s /sbin/nologin www-data
+adduser -D -s /sbin/nologin www-data || echo "added"
 
 # LibreSSL
 cd /tmp

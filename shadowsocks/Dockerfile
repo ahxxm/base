@@ -3,7 +3,7 @@ FROM rust:alpine AS builder
 ADD build.sh /
 RUN /build.sh
 
-FROM alpine:3.13 AS runner
+FROM alpine:3.14 AS runner
 COPY --from=builder /workdir/ssserver /workdir/sslocal /workdir/ssurl /workdir/ssmanager /usr/bin/
 CMD ["ssserver"]
 

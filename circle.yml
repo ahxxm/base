@@ -13,17 +13,20 @@ commands:
           docker push ahxxm/base:<<parameters.tag>>
 jobs:
   nginx:
-    machine: true
+    machine:
+      image: ubuntu-2004:202201-02
     steps:
       - build_push:
           tag: "nginx"
   qbittorrent:
-    machine: true
+    machine:
+      image: ubuntu-2004:202201-02
     steps:
       - build_push:
           tag: "qbittorrent"
   shadowsocks:
-    machine: true
+    machine:
+      image: ubuntu-2004:202201-02
     steps:
       - build_push:
           tag: "shadowsocks"

@@ -1,4 +1,4 @@
-FROM alpine:3.14
+FROM alpine:3
 
 # credit to https://github.com/caoli5288/docker-qbittorrent-nox/blob/master/Dockerfile
 # only replaced binary with static musl build
@@ -8,7 +8,8 @@ FROM alpine:3.14
 # groupadd and useradd
 RUN apk add --no-cache shadow
 
-# wget -O qbittorrent-nox https://github.com/userdocs/qbittorrent-nox-static/releases/download/release-4.3.5_v2.0.4/x86_64-qbittorrent-nox
+# https://github.com/userdocs/qbittorrent-nox-static/releases/
+# x86_64 prefix
 # chmod +x qbittorrent-nox
 ADD qbittorrent-nox /usr/bin/
 

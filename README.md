@@ -2,9 +2,9 @@
 
 [![Circle CI](https://circleci.com/gh/ahxxm/base/tree/master.svg?style=svg)](https://circleci.com/gh/ahxxm/base/tree/master)
 
-for personal use.
+`docker pull ahxxm/base:[tag]` for personal use.
 
-List:
+Tags list:
 
 - `nginx`: mainline version with http2 and chacha20, default user is `www-data`.
 
@@ -12,7 +12,4 @@ List:
 
 - `qbittorrent`: [musl build](https://github.com/userdocs/qbittorrent-nox-static)
 
-Deprecated:
-
-- `v2ray`: use `sebuild/v2ray` instead, check [repo](https://github.com/s-build/v2ray)
-
+- `fo`: [fo project](https://github.com/ahxxm/fo) for message passing

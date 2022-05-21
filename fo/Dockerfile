@@ -1,5 +1,7 @@
 FROM amazoncorretto:11 as build
 WORKDIR /workdir
+RUN yum install -y unzip curl
+RUN curl -fSL https://github.com/ahxxm/fo/archive/refs/heads/master.zip --output master.zip && unzip master.zip && mv fo-master/* ./
 
 # install leiningen
 ADD https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein /usr/bin/

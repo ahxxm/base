@@ -41,6 +41,7 @@ workflows:
   version: 2
   commit:
     jobs:
+      - fo
       - nginx
       - shadowsocks
       - qbittorrent

@@ -24,6 +24,12 @@ jobs:
     steps:
       - build_push:
           tag: "qbittorrent"
+  fo:
+    machine:
+      image: ubuntu-2004:202201-02
+    steps:
+      - build_push:
+          tag: "fo"
   shadowsocks:
     machine:
       image: ubuntu-2004:202201-02
@@ -35,6 +41,7 @@ workflows:
   version: 2
   commit:
     jobs:
+      - fo
       - nginx
       - shadowsocks
       - qbittorrent

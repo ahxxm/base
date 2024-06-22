@@ -1,4 +1,4 @@
-FROM amazoncorretto:11 as build
+FROM amazoncorretto:17 as build
 WORKDIR /workdir
 RUN yum install -y unzip curl
 
@@ -12,5 +12,5 @@ RUN lein deps
 RUN lein uberjar
 
 # runner
-FROM amazoncorretto:11
+FROM amazoncorretto:17
 COPY --from=build /workdir/target/fo-0.1.0-SNAPSHOT-standalone.jar /fo.jar

@@ -14,25 +14,25 @@ commands:
 jobs:
   nginx:
     machine:
-      image: ubuntu-2004:202201-02
+      image: default
     steps:
       - build_push:
           tag: "nginx"
   qbittorrent:
     machine:
-      image: ubuntu-2004:202201-02
+      image: default
     steps:
       - build_push:
           tag: "qbittorrent"
   fo:
     machine:
-      image: ubuntu-2004:202201-02
+      image: default
     steps:
       - build_push:
           tag: "fo"
   shadowsocks:
     machine:
-      image: ubuntu-2004:202201-02
+      image: default
     steps:
       - build_push:
           tag: "shadowsocks"

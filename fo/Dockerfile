@@ -1,6 +1,6 @@
-FROM eclipse-temurin:17-jre-alpine AS build
+FROM ibm-semeru-runtimes:open-17-jre AS build
 WORKDIR /workdir
-RUN apk add curl unzip bash
+RUN apt update && apt install -y curl unzip bash
 
 # install leiningen
 ADD https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein /usr/bin/
@@ -11,5 +11,5 @@ RUN curl -fSL https://github.com/ahxxm/fo/archive/refs/heads/master.zip --output
 RUN lein deps && lein uberjar && rm -rf ~/.m2
 
 # runner
-FROM eclipse-temurin:17-jre-alpine
+FROM ibm-semeru-runtimes:open-17-jre
 COPY --from=build /workdir/target/fo-0.1.0-SNAPSHOT-standalone.jar /fo.jar

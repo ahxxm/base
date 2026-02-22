@@ -9,9 +9,7 @@ FROM alpine:3
 RUN apk add --no-cache shadow
 
 # https://github.com/userdocs/qbittorrent-nox-static/releases/
-# x86_64 prefix
-# chmod +x qbittorrent-nox
-ADD qbittorrent-nox /usr/bin/
+ADD --chmod=755 https://github.com/userdocs/qbittorrent-nox-static/releases/download/release-5.1.4_v2.0.11/x86_64-qbittorrent-nox /usr/bin/qbittorrent-nox
 
 # wget https://raw.githubusercontent.com/caoli5288/docker-qbittorrent-nox/master/qBittorrent.conf
 ADD qBittorrent.conf /etc/opt/qBittorrent.conf

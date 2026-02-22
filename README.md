@@ -1,12 +1,8 @@
 # Base Image
 
-[![Circle CI](https://circleci.com/gh/ahxxm/base/tree/master.svg?style=svg)](https://circleci.com/gh/ahxxm/base/tree/master)
-
 `docker pull ahxxm/base:[tag]` for personal use.
 
 Tags list:
-
-- `nginx`: mainline version with http2 and chacha20, default user is `www-data`.
 
 - `shadowsocks`: shadowsocks-rust
 
